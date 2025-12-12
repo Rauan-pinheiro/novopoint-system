@@ -1,0 +1,588 @@
+
+PIZZAS:
+    SABOR: calabresa com mussalera
+
+    DESCRIÇÃO: molho, calabresa, mussarela, cebola, tomate,oregano
+
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 25.00, M = 30.00, G = 35.00
+
+    -----------------------------
+
+    SABOR: portuguesa
+
+    DESCRIÇÃO: molho, presunto, mussarela, ovo, cebola, ervilha, oregano
+
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 30.00, M = 35.00, G = 40.00
+
+    -----------------------------
+
+    SABOR: frango com mussalera
+
+    DESCRIÇÃO: molho, frango, mussalera, cebola, tomate e oregano
+
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 25.00, M = 30.00, G = 35.00
+
+    -----------------------------
+
+    SABOR: a moda da casa
+
+    DESCRIÇÃO: molho, presunto, frango, calabresa moída, catupiry, tomate e oregano
+
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 30.00, M = 35.00, G = 40.00
+
+    -----------------------------
+
+    SABOR: bauru
+
+    DESCRIÇÃO: molho, presunto, mussarela, tomate e oregano
+
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 25.00, M = 30.00, G = 35.00
+
+    -----------------------------
+
+    SABOR: crocante
+
+    DESCRIÇÃO: molho, mussalera, catupiry e batata palha
+
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 25.00, M = 30.00, G = 35.00
+
+    -----------------------------
+
+    SABOR: jabá
+
+    DESCRIÇÃO: molho, carne de sol, mussarela, cebola, tomate e oregano
+    
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 30.00, M = 35.00, G = 40.00
+
+    -----------------------------
+
+    SABOR: italiana
+
+    DESCRIÇÃO: molho, salame italiano, mussarela, tomate e oregano
+    
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 30.00, M = 35.00, G = 40.00
+
+    -----------------------------
+
+    SABOR: mussalera
+
+    DESCRIÇÃO: molho, mussarela, cebola, tomate e oregano 
+    
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 25.00, M = 30.00, G = 35.00
+
+    -----------------------------
+
+    SABOR: atum
+
+    DESCRIÇÃO: molho, atum ralado, mussalera, cebola, tomate e oregano
+    
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 30.00, M = 35.00, G = 40.00
+
+    -----------------------------
+
+    SABOR: bacon
+
+    DESCRIÇÃO: molho, mussalera, bacon, tomate e oregano
+    
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 30.00, M = 35.00, G = 40.00
+
+    -----------------------------
+
+    SABOR: caipira
+
+    DESCRIÇÃO: molho, frango, catupiry, milho, milho, tomate e oregano
+    
+    TAMHNOS: P, M, G
+
+    PREÇO: P = 25.00, M = 30.00, G = 35.00
+
+    -----------------------------
+
+    (adicional de borda 5 reais, cheddar ou catupiry)
+
+PASTEIS:
+    SABOR: carne moida
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 8 PASTELÃO = 9
+
+    -----------------------------
+
+    SABOR: calabresa
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 8 PASTELÃO = 9
+
+    -----------------------------
+
+    SABOR: calabresa/mussalera
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 9 PASTELÃO = 10
+
+    -----------------------------
+
+    SABOR: calabresa/catupiry
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 9 PASTELÃO = 10
+
+    -----------------------------
+
+    SABOR: frango
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 8 PASTELÃO = 9
+
+    -----------------------------
+
+    SABOR: frango/mussalera
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 9 PASTELÃO = 10
+
+    -----------------------------
+
+    SABOR: frango/catupiry
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 9 PASTELÃO = 10
+
+    -----------------------------
+
+    SABOR: carne seca
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 8 PASTELÃO = 9
+
+    -----------------------------
+
+    SABOR: carne seca/mussalera
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 9 PASTELÃO = 10
+
+    -----------------------------
+
+    SABOR: carne seca/catupiry
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 9 PASTELÃO = 10
+
+    -----------------------------
+
+    SABOR: salame/mussalera
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 9 PASTELÃO = 10
+
+    -----------------------------
+
+    SABOR: bacon
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 9 PASTELÃO = 10
+
+    -----------------------------
+
+    SABOR: bauru
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 8 PASTELÃO = 9
+
+    -----------------------------
+
+    SABOR: pizza
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 9 PASTELÃO = 10
+
+    -----------------------------
+
+    SABOR: queijo
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 9 PASTELÃO = 10
+
+    -----------------------------
+
+    SABOR: especial
+
+    DESCRIÇÃO: carne moida, calabresa, mussalera, ovo, catupiry e tomate
+
+    PREÇO(DEPENDE DO TIPO DA MASSA): CHINÊS = 10 PASTELÃO = 12
+
+    -----------------------------
+
+SALGADOS:
+    BOLIHNO MISTO
+
+    ENROLADINHO
+
+    BOLINHO DE carne
+
+    COXINHA CATUPIRY
+
+    COXINHA
+
+    PREÇO: qualquer salagado é 3.00
+
+    -----------------------------
+
+SANDUÍCHES:
+    SABOR: x-calabresa
+
+    DESCRIÇÃO:pão, molho, hamburguer, mussalera, presunto, calabresa, alface e tomate
+
+    PREÇO: 11.00
+
+    -----------------------------
+
+    SABOR: x-bacon
+
+    DESCRIÇÃO:pão, molho, hamburguer, mussalera, presunto, bacon
+
+    PREÇO: 10.00
+
+    -----------------------------
+
+    SABOR: x-burguer
+
+    DESCRIÇÃO:pão, molho, hamburguer, mussalera, presunto, 
+
+    PREÇO: 9.00
+
+    -----------------------------
+
+    SABOR: x-bacon salada egg
+
+    DESCRIÇÃO:pão, molho, hamburguer, mussalera, presunto, bacon, ovo, alface e tomate
+
+    PREÇO: 12.00
+
+    -----------------------------
+
+    SABOR: x-salada
+
+    DESCRIÇÃO:pão, molho, hamburguer, mussalera, presunto, alface e tomate
+
+    PREÇO: 10.00
+
+    -----------------------------
+
+    SABOR: x-salada egg
+
+    DESCRIÇÃO:pão, molho, hamburguer, mussalera, presunto, ovo, alface e tomate
+
+    PREÇO: 11.00
+
+    -----------------------------
+
+    SABOR: x-duplo
+
+    DESCRIÇÃO:pão, molho, 2x hamburguer, mussalera, presunto, alface e tomate
+
+    PREÇO: 13.00
+
+    -----------------------------
+
+    SABOR: x-egg
+
+    DESCRIÇÃO:pão, molho, hamburguer, mussalera, presunto e ovo
+
+    PREÇO: 10.00
+
+    -----------------------------
+
+    SABOR: x-tudo
+
+    DESCRIÇÃO:pão, molho, hamburguer, mussalera, presunto, calabresa, bacon, ovo, alface e tomate
+
+    PREÇO: 14.00
+
+    -----------------------------
+
+    SABOR: x-file mion
+
+    DESCRIÇÃO:pão, molho, file mion, ovo, presunto e mussalera
+
+    PREÇO: 15.00
+
+    -----------------------------
+
+    SABOR: x-catupiry
+
+    DESCRIÇÃO:pão, molho, hamburguer, catupiry e presunto
+
+    PREÇO: 9.00
+
+    -----------------------------
+
+    SABOR: x-cheddar
+
+    DESCRIÇÃO:pão, molho, hamburguer, cheddar e presunto
+
+    PREÇO: 9.00
+
+    -----------------------------
+
+BEIRUTE:
+    SABOR: beirute calabresa
+
+    DESCRIÇÃO: calabresa moida, mussalera, tomate e cebola
+
+    PREÇO: P=30.00  G =35.00
+
+    -----------------------------
+
+    SABOR: beirute mista
+
+    DESCRIÇÃO: presunto, mussalera, tomate e cebola
+
+    PREÇO: P=30.00  G =35.00
+
+    -----------------------------
+
+    SABOR: beirute frango
+
+    DESCRIÇÃO: frango, mussalera, milho, tomate e cebola
+
+    PREÇO: P=30.00  G =35.00
+
+    -----------------------------
+
+    SABOR: beirute bacon
+
+    DESCRIÇÃO: bacon, mussalera, tomate e cebola
+
+    PREÇO: P=30.00  G =35.00
+
+    -----------------------------
+
+    SABOR: beirute portuguesa
+
+    DESCRIÇÃO: presunto, mussalera, ovo, ervilha, tomate e cebola
+
+    PREÇO: P=30.00  G =35.00
+
+    -----------------------------
+
+    SABOR: beirute carne de sol
+
+    DESCRIÇÃO: carne de sol, mussalera, tomate e alface
+
+    PREÇO: P=34.00  G =38.00
+
+    -----------------------------
+
+    SABOR: beirute a moda da casa
+
+    DESCRIÇÃO: presunto, frango, calabresa moida, mussalera, catupiry, tomate e cebola
+
+    PREÇO: P=34.00  G =38.00
+
+    -----------------------------
+
+    SABOR: beirute rei
+
+    DESCRIÇÃO: presunto, mussalera, ovo, bacon, tomate e cebola
+
+    PREÇO: P=34.00  G =38.00
+
+    -----------------------------
+
+ESFIHAS SALGADAS:
+    SABOR: esfiha atum
+
+    PREÇO: 9.00
+
+    -----------------------------
+
+    SABOR: esfiha bacon/mussalera
+
+    PREÇO: 9.00
+
+    -----------------------------
+
+    SABOR: esfiha calabresa
+
+    PREÇO: 7.00
+
+    -----------------------------
+
+    SABOR: esfiha bauru
+
+    PREÇO: 8.00
+
+    -----------------------------
+
+    SABOR: esfiha carne seca
+
+    PREÇO: 8.00
+
+    -----------------------------
+
+    SABOR: esfiha crocante
+
+    PREÇO: 9.00
+
+    -----------------------------
+
+    SABOR: frango
+
+    PREÇO: 7.00
+
+    -----------------------------
+
+    SABOR: esfiha mista
+
+    PREÇO: 7.00
+
+    -----------------------------
+    
+    SABOR: esfiha pizza
+
+    PREÇO: 8.00
+
+    -----------------------------
+
+    SABOR: esfiha portuguesa
+
+    PREÇO: 10.00
+
+    -----------------------------
+
+    SABOR: esfiha queijo
+
+    PREÇO: 8.00
+
+    -----------------------------
+
+    SABOR: esfiha milho
+
+    PREÇO: 8.00
+
+    -----------------------------
+
+    SABOR: esfiha salame/mussalera
+
+    PREÇO: 10.00
+
+    -----------------------------
+
+    (A CADA ADICIONAL É ACRESENTADO 2.00 EM CADA SABOR)
+
+ESFIHAS DOCES:
+    SABOR: ESFIHAS DOCES brigadeiro
+
+    DESCRIÇÃO: chocolate ao leite
+
+    PREÇO: 10.00
+
+    -----------------------------
+
+    SABOR: ESFIHAS DOCES banana/chocolate
+
+    DESCRIÇÃO: chocolate ao leite c/banana
+
+    PREÇO: 10.00
+
+    -----------------------------
+
+
+    SABOR: ESFIHAS DOCES prestígio
+
+    DESCRIÇÃO: chocolate ao leite c/coco ralado
+
+    PREÇO: 11.00
+
+    -----------------------------
+
+    SABOR: ESFIHAS DOCES romeu e julieta
+
+    DESCRIÇÃO: goiaba c/mussalera
+
+    PREÇO: 11.00
+
+    -----------------------------
+
+PORÇÕES:
+    SABOR: porção boi (250gm)
+
+    PREÇO: 20.00
+
+    -----------------------------
+
+    SABOR: porção porco (250gm)
+
+    PREÇO: 20.00
+
+    -----------------------------
+
+    SABOR: porção calabresa
+
+    PREÇO: 20.00
+
+    -----------------------------
+
+    SABOR: porção linguiça
+
+    PREÇO: 20.00
+
+    -----------------------------
+
+    SABOR: porção macaxeira
+
+    PREÇO: 16.00
+
+    -----------------------------
+
+    SABOR: porção completa
+
+    DESCRIÇÃO: porco/boi/calabresa/batata
+
+    PREÇO: 35.00
+
+    -----------------------------
+
+    SABOR: porção batata/calabresa
+
+    PREÇO: 25.00
+
+    -----------------------------
+
+    SABOR: porção batata/bacon/cheddar
+
+    PREÇO: 25.00
+
+    -----------------------------
+
+    SABOR: porção batata
+
+    PREÇO: P= 12.00 G= 17.00
+
+    -----------------------------
+
+BEBIDAS:
+    SUCO/VITAMINA:
+
+    SABORES: 
+    açai, 
+    acelora, 
+    abacaxi, 
+    caju, 
+    cajá, 
+    graviola, 
+    goiaba, 
+    manga, 
+    maracujá, 
+    morango
+
+    PREÇO: se for suco é 6.00 | se for vitamina é 7.00
