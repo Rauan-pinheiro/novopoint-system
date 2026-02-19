@@ -26,8 +26,6 @@ class ItemPedidoSerializer(serializers.ModelSerializer):
         model = ItemPedido
         fields = ['id', 'pedido', 'produto', 'quantidade', 'opcoes_selecionadas', 'observacoes']
 
-# --- CÓDIGO MOVIDO PARA O LUGAR CORRETO ---
-
 class ItemPedidoImpressaoSerializer(serializers.ModelSerializer):
     """
     Serializer para formatar os itens do pedido para a impressão,
@@ -61,8 +59,6 @@ class PedidoImpressaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pedido
         fields = ['id', 'mesa', 'nome_cliente', 'garcom', 'data_hora', 'itens']
-
-# --- FIM DO CÓDIGO MOVIDO ---
 
 class ItemPedidoParaCaixaSerializer(serializers.ModelSerializer):
     produto = serializers.StringRelatedField()

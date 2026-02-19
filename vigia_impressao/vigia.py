@@ -1,20 +1,19 @@
-# vigia.py (Versão Premium - Conexão Windows)
 
 import requests
 import time
-from escpos.printer import Win32Raw # <<< USANDO DRIVER WINDOWS
+from escpos.printer import Win32Raw 
 import schedule
 from datetime import datetime
 import traceback
 from decouple import config
 
-# --- DADOS DA EMPRESA  ---
+# DADOS DA EMPRESA
 NOME_EMPRESA = config('NOME_EMPRESA')
 ENDERECO_1 = config('ENDERECO_1')
 CONTATO = config('CONTATO')
 MSG_RODAPE = "Obrigado pela preferencia!\nVolte Sempre!"
 
-# --- CONFIGURAÇÕES ---
+# CONFIGURAÇÕES
 API_BASE_URL = config('API_BASE_URL') 
 LOGIN_URL = f"{API_BASE_URL}/token/"
 PEDIDOS_URL = f"{API_BASE_URL}/pedidos/"
@@ -31,7 +30,7 @@ INTERVALO_VERIFICACAO_SEGUNDOS = config('INTERVALO_VERIFICACAO_SEGUNDOS', cast=i
 ENCODING = 'cp850'
 auth_token = None
 
-# --- FUNÇÕES DE CONEXÃO ---
+# FUNÇÕES DE CONEXÃO
 def fazer_login():
     global auth_token
     print(f"[{datetime.now()}] Conectando...")
@@ -71,19 +70,14 @@ def atualizar_status(pid, status):
     try: requests.patch(f"{PEDIDOS_URL}{pid}/", headers=get_headers(), json={'status': status}); return True
     except: return False
 
-# --- IMPRESSÃO PREMIUM (VIA WINDOWS) ---
 def imprimir_cupom(pedido, tipo):
     try:
-        # Conecta usando o nome do Windows (Estável)
         p = Win32Raw(printer_name=PRINTER_NAME)
         p.codepage = ENCODING
         
-        # ==========================================
         # CABEÇALHO (Identidade Visual)
-        # ==========================================
         p.set(align='center')
         
-        # Nome da Empresa (Tenta grande, se driver aceitar)
         p.set(width=2, height=2, bold=True)
         p.text(f"{NOME_EMPRESA}\n")
         
@@ -94,13 +88,10 @@ def imprimir_cupom(pedido, tipo):
         
         p.text("-" * 32 + "\n")
 
-        # ==========================================
         # METADADOS
-        # ==========================================
         if tipo == 'CONTA':
             p.set(bold=True); p.text("EXTRATO DE CONFERENCIA\n"); p.set(bold=False)
         else:
-            # Cozinha grande
             p.set(bold=True, width=2, height=2); p.text("COZINHA\n"); p.set(width=1, height=1, bold=False)
 
         p.set(align='left')
@@ -112,9 +103,7 @@ def imprimir_cupom(pedido, tipo):
         
         p.text("-" * 32 + "\n")
 
-        # ==========================================
         # ITENS
-        # ==========================================
         if tipo == 'CONTA':
             p.set(bold=True)
             p.text(f"{'ITEM':<20} {'V.UNIT':>10}\n")
@@ -135,21 +124,17 @@ def imprimir_cupom(pedido, tipo):
             nome_full = f"{qtd}x {nome}"
             if opcoes: nome_full += f" ({','.join(opcoes)})"
 
-            # --- IMPRESSÃO DO ITEM ---
             if tipo == 'COZINHA':
-                # Cozinha: Nome (Tenta Grande)
                 p.set(width=2, height=2, bold=True)
                 p.text(f"{nome_full}\n")
                 p.set(width=1, height=1, bold=False)
             else:
-                # Conta: Nome Normal + Preço
                 p.set(bold=True)
                 p.text(f"{nome_full}")
                 p.set(align='right')
                 p.text(f" R$ {preco_total_item:.2f}\n")
                 p.set(align='left', bold=False)
 
-            # Detalhes
             if adds: p.text(f"  + {', '.join(adds)}\n")
             if obs: p.text(f"  Obs: {obs}\n")
             
@@ -157,9 +142,7 @@ def imprimir_cupom(pedido, tipo):
 
         p.text("-" * 32 + "\n")
 
-        # ==========================================
         # TOTAL E RODAPÉ (Só na Conta)
-        # ==========================================
         if tipo == 'CONTA':
             p.set(align='right', width=2, height=2, bold=True)
             p.text(f"TOTAL: R$ {total_conta:.2f}\n")
@@ -179,7 +162,7 @@ def imprimir_cupom(pedido, tipo):
         print(f"Erro Print: {e}")
         return False
 
-# --- LOOP ---
+# LOOP 
 def ciclo():
     pedidos = buscar_pedidos_pendentes()
     for p in pedidos:

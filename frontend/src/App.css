@@ -1,11 +1,7 @@
-/* frontend/src/App.css - Versão 6.0 (Dashboard Premium & Mobile Text Fix) */
 
-/* === 0. IMPORTAÇÃO DE FONTE PREMIUM === */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* === 1. RESET E VARIÁVEIS === */
 :root {
-  /* Paleta Dark "Enterprise" */
   --bg-body: #090c10;       
   --bg-card: #161b22;       
   --bg-subtle: #21262d;     
@@ -16,7 +12,6 @@
   --text-secondary: #8b949e;
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   
-  /* Cores de Status */
   --brand-blue: #58a6ff;
   --brand-green: #238636;
   --brand-green-hover: #2ea043;
@@ -38,7 +33,6 @@ body {
   line-height: 1.6; -webkit-font-smoothing: antialiased;
 }
 
-/* === 2. LAYOUT & HEADER === */
 .App { min-height: 100vh; display: flex; flex-direction: column; }
 
 .App-header {
@@ -60,7 +54,6 @@ body {
   padding: 20px; padding-bottom: 120px;
 }
 
-/* === 3. COMPONENTES DE UI (Botões e Inputs) === */
 button {
   cursor: pointer; border: 1px solid rgba(240, 246, 252, 0.1); 
   border-radius: var(--radius); padding: 10px 18px; 
@@ -84,14 +77,11 @@ input, textarea {
 }
 input:focus, textarea:focus { border-color: var(--brand-blue); box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.15); }
 
-/* === 4. DASHBOARD (ESTILOS RESTAURADOS) === */
-
 .dashboard-container h2 {
   text-align: center; font-size: 1.8rem; margin: 30px 0;
   color: var(--text-primary); letter-spacing: -0.5px;
 }
 
-/* Grade de Resumo (Totais) */
 .dashboard-summary-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -106,11 +96,10 @@ input:focus, textarea:focus { border-color: var(--brand-blue); box-shadow: 0 0 0
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   background: var(--brand-blue); /* Cor padrão */
 }
-/* Cores específicas para cada card de resumo se tiver classe específica */
+
 .vendas-diarias-container { text-align: center; margin-bottom: 20px; padding: 15px; background: var(--bg-subtle); border-radius: var(--radius); border: 1px solid var(--border-color); }
 .vendas-diarias-container h3 { margin: 0; font-size: 1.5rem; color: var(--brand-green); }
 
-/* Lista de Pedidos no Dashboard */
 .dashboard-section h3 {
   font-size: 1.2rem; border-bottom: 1px solid var(--border-color);
   padding-bottom: 10px; margin-top: 40px; color: var(--text-secondary);
@@ -122,7 +111,6 @@ input:focus, textarea:focus { border-color: var(--brand-blue); box-shadow: 0 0 0
   gap: 20px; align-items: start;
 }
 
-/* Card Individual do Pedido */
 .dashboard-pedido {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -140,7 +128,6 @@ input:focus, textarea:focus { border-color: var(--brand-blue); box-shadow: 0 0 0
 }
 .pedido-header strong { font-size: 1.1rem; color: var(--text-primary); }
 
-/* Badge de Status */
 .status-badge {
   font-size: 0.75rem; padding: 4px 8px; border-radius: 12px;
   font-weight: 700; text-transform: uppercase;
@@ -161,29 +148,24 @@ input:focus, textarea:focus { border-color: var(--brand-blue); box-shadow: 0 0 0
 .imprimir-conta-button { flex: 1; background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.8rem; }
 .marcar-pago-button { flex: 1; background: var(--brand-green); border: none; color: white; font-size: 0.8rem; }
 
-
-/* === 5. SELETORES DE PRODUTOS (CORREÇÃO DE TEXTO CORTADO) === */
 .form-section { margin-bottom: 30px; }
 .section-label { display: block; font-weight: 600; margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; text-transform: uppercase; }
 
-/* Grid Flexível */
 .opcoes-grid {
   display: grid; 
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
   gap: 10px;
 }
 
-/* FIX: Card Selecionável com Texto Quebrado */
 .opcao-card {
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
   background-color: var(--bg-subtle); border: 1px solid var(--border-color);
   border-radius: var(--radius); padding: 15px 10px; 
   
-  /* AQUI ESTÁ A MÁGICA PARA NÃO CORTAR O TEXTO */
-  height: auto;           /* Altura automática */
-  min-height: 80px;       /* Mínimo confortável */
-  white-space: normal;    /* Permite quebra de linha */
-  overflow-wrap: anywhere;/* Quebra palavra se for muito longa */
+  height: auto;          
+  min-height: 80px;      
+  white-space: normal;    
+  overflow-wrap: anywhere;
   word-break: break-word; 
   
   cursor: pointer; transition: all 0.2s; user-select: none;
@@ -199,24 +181,22 @@ input:checked + .opcao-card {
 }
 input:checked + .opcao-card strong { color: var(--brand-blue); }
 
-/* Tamanhos */
+
 .tamanhos-grid { display: flex; gap: 10px; flex-wrap: wrap; }
 .tamanho-label-wrapper { flex: 1; min-width: 90px; }
 .tamanho-card {
-  height: 100%; min-height: 60px; /* Altura mínima */
+  height: 100%; min-height: 60px; 
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   background-color: var(--bg-subtle); border: 1px solid var(--border-color);
   border-radius: var(--radius); padding: 10px; cursor: pointer; transition: 0.2s;
 }
 input:checked + .tamanho-card { background-color: var(--brand-green); border-color: var(--brand-green); color: white; }
 
-/* === 6. LISTAS E CARRINHO (CORREÇÃO DE TEXTO CORTADO) === */
 .clickable {
   background-color: var(--bg-card); border: 1px solid var(--border-color);
   padding: 20px; margin-bottom: 12px; border-radius: var(--radius);
   cursor: pointer; display: block; font-weight: 600; font-size: 1.1rem;
   
-  /* FIX: Texto longo em categorias/produtos */
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -231,10 +211,9 @@ input:checked + .tamanho-card { background-color: var(--brand-green); border-col
   border-radius: var(--radius); cursor: pointer; 
 }
 
-/* Carrinho */
 .carrinho { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; margin-bottom: 30px; }
 .carrinho-item { padding: 15px 0; border-bottom: 1px dashed var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-.item-info { flex: 1; min-width: 150px; } /* Garante espaço pro texto */
+.item-info { flex: 1; min-width: 150px; } 
 
 .item-controles { 
   display: flex; align-items: center; gap: 8px; background: var(--bg-body); 
@@ -243,28 +222,20 @@ input:checked + .tamanho-card { background-color: var(--brand-green); border-col
 .qtd-button { width: 30px; height: 30px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg-card); border: none; }
 .remove-item-button { background: transparent; border: none; color: var(--brand-red); font-size: 1.2rem; margin-left: 5px; }
 
-/* === 7. LOGIN === */
 .login-container { max-width: 400px; margin: 50px auto; padding: 20px; }
 .login-form { background: var(--bg-card); padding: 30px; border-radius: var(--radius); border: 1px solid var(--border-color); }
 
-/* === 8. MOBILE FIX DEFINITIVO (Responsividade + Correção de Textos) === */
 @media (max-width: 768px) {
   
-  /* --- A. Layout Geral Mobile --- */
-  /* Dashboard e Totais viram coluna única */
   .dashboard-list, .dashboard-summary-grid { grid-template-columns: 1fr; }
   
-  /* Seletores sempre em 2 colunas */
   .opcoes-grid { grid-template-columns: 1fr 1fr; }
   .tamanhos-grid { flex-direction: row; }
 
-  /* Ajuste no carrinho */
   .carrinho-item { flex-direction: column; align-items: flex-start; }
   .item-controles { width: 100%; justify-content: space-between; margin-top: 8px; padding: 8px 15px; }
   .section-label { font-size: 0.85rem; margin-bottom: 8px; }
 
-  /* --- B. Correção Crítica de Texto Cortado --- */
-  /* Força quebra de linha em botões e cards */
   .clickable, 
   .opcao-card, 
   .tamanho-card,
@@ -272,22 +243,22 @@ input:checked + .tamanho-card { background-color: var(--brand-green); border-col
   .cancel-button,
   .dashboard-button,
   button {
-    white-space: normal !important;      /* Permite texto em várias linhas */
-    word-break: break-word !important;   /* Quebra palavras longas */
-    overflow-wrap: anywhere !important;  /* Segurança extra para não vazar */
+    white-space: normal !important;      
+    word-break: break-word !important;   
+    overflow-wrap: anywhere !important;  
     
-    height: auto !important;             /* Altura dinâmica (cresce com o texto) */
-    min-height: 54px !important;         /* Tamanho mínimo para o dedo */
+    height: auto !important;             
+    min-height: 54px !important;         
     
-    display: flex !important;            /* Centraliza conteúdo */
+    display: flex !important;           
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
-    padding: 12px 10px !important;       /* Padding interno seguro */
+    padding: 12px 10px !important;       
     line-height: 1.3 !important;
   }
 
-  /* Ajustes específicos de fonte para caber mais texto */
+
   .opcao-card strong { font-size: 0.9rem !important; width: 100%; }
   .opcao-card span { margin-top: 4px; font-size: 0.8rem !important; display: block; }
   

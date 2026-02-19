@@ -1,5 +1,3 @@
-# cardapio/models.py
-
 from django.db import models
 
 class Categoria(models.Model):
@@ -9,7 +7,6 @@ class Categoria(models.Model):
     def __str__(self):
         return self.nome
 
-# --- CLASSE MOVIDA PARA CIMA ---
 # GrupoDeOpcoes precisa ser definido ANTES de Produto
 class GrupoDeOpcoes(models.Model):
     nome = models.CharField(max_length=100, unique=True)
@@ -20,7 +17,6 @@ class GrupoDeOpcoes(models.Model):
     def __str__(self):
         return self.nome
 
-# --- CLASSE MOVIDA PARA CIMA ---
 # ValoresDeOpcoes precisa ser definido ANTES de PrecosPorOpcao
 class ValoresDeOpcoes(models.Model):
     # O related_name 'valores_de_opcoes' será usado pelo serializer

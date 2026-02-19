@@ -2,9 +2,8 @@
 
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from django_filters.rest_framework import DjangoFilterBackend # Certifique-se de que está importado se usá-lo na view
+from django_filters.rest_framework import DjangoFilterBackend 
 
-# Importe APENAS os nomes que existem
 from .views import (
     MesaViewSet, PedidoViewSet, ItemPedidoViewSet, 
     VendasDiariasView, PedidosAbertosViewSet, DashboardDiarioView

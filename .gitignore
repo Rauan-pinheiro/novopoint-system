@@ -1,17 +1,17 @@
-# --- GERAL E SISTEMA ---
+# GERAL E SISTEMA
 .DS_Store
 Thumbs.db
 .vscode/
 links_config.txt
 
-# --- SEGURANÇA (O Git vai ignorar isso, salve backup separado!) ---
+# SEGURANÇA
 .env
 *.env
 env/
 venv/
 .venv/
 
-# --- FRONTEND (Node/React/Next) ---
+# FRONTEND (Node/React/Next) 
 node_modules/
 .vercel/
 npm-debug.log*
@@ -19,13 +19,13 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 
-# --- BACKEND (Python/Django) ---
+# BACKEND (Python/Django) 
 __pycache__/
 *.pyc
 db.sqlite3
 media/
 
-# --- VIGIA (Compilados e Drivers) ---
+# VIGIA (Compilados e Drivers) 
 vigia_impressao/build/
 vigia_impressao/dist/
 vigia_impressao/impressora/

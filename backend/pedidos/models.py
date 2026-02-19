@@ -31,7 +31,7 @@ class Pedido(models.Model):
     nome_cliente = models.CharField(max_length=100, blank=True, null=True, help_text="Nome de referência para o pedido, ex: Mesa do Renato")
 
     def __str__(self):
-        # Usamos self.mesa.numero se a mesa existir, senão mostramos 'N/A'
+        # Usa self.mesa.numero se a mesa existir, senão mostra 'N/A'
         nome_mesa = self.mesa.numero if self.mesa else 'N/A'
         return f'Pedido da Mesa {nome_mesa} - {self.data_hora.strftime("%d/%m/%Y %H:%M")}'
 

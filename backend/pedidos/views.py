@@ -2,13 +2,13 @@
 
 from django.utils import timezone
 from django.db.models import Sum
-from datetime import datetime, time # Importações de datetime
+from datetime import datetime, time 
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework.decorators import action # Importa o @action
+from rest_framework.decorators import action 
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Mesa, Pedido, ItemPedido
@@ -16,13 +16,13 @@ from cardapio.models import Produto, PrecosPorOpcao, ValoresDeOpcoes
 
 from .serializers import (
     MesaSerializer, PedidoSerializer, ItemPedidoSerializer, MyTokenObtainPairSerializer,
-    PedidoParaCaixaSerializer, PedidoDashboardSerializer, PedidoImpressaoSerializer # Importa o serializer de impressão
+    PedidoParaCaixaSerializer, PedidoDashboardSerializer, PedidoImpressaoSerializer 
 )
 
-# --- FUNÇÃO AUXILIAR DE DATA ---
+# FUNÇÃO AUXILIAR DE DATA
 def get_intervalo_dia_trabalho():
     agora_local = timezone.localtime(timezone.now())
-    hora_fechamento = time(2, 0, 0) # 2:00 AM
+    hora_fechamento = time(2, 0, 0) # 2:00H
     if agora_local.time() < hora_fechamento:
         data_hoje = agora_local.date() - timezone.timedelta(days=1)
     else:
@@ -31,11 +31,11 @@ def get_intervalo_dia_trabalho():
     fim_dia = inicio_dia + timezone.timedelta(days=1)
     return inicio_dia, fim_dia
 
-# --- VIEWS DE AUTENTICAÇÃO ---
+# VIEWS DE AUTENTICAÇÃO
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
-# --- VIEWS DO APP PEDIDOS ---
+# VIEWS DO APP PEDIDOS
 class MesaViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Mesa.objects.all()
     serializer_class = MesaSerializer
@@ -51,7 +51,7 @@ class PedidoViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(garcom=self.request.user)
 
-    # AÇÃO DE IMPRESSÃO - NÃO PRECISA DE VIEW SEPARADA
+    # AÇÃO DE IMPRESSÃO
     @action(detail=True, methods=['get'], url_path='para-impressao', permission_classes=[IsAuthenticated])
     def para_impressao(self, request, pk=None):
         pedido = self.get_object()
@@ -63,7 +63,7 @@ class ItemPedidoViewSet(viewsets.ModelViewSet):
     serializer_class = ItemPedidoSerializer
     permission_classes = [IsAuthenticated]
     def perform_create(self, serializer):
-        # ... (código de cálculo de preço) ...
+        # código de cálculo de preço
         produto_id = self.request.data.get('produto')
         opcoes_ids = self.request.data.get('opcoes_selecionadas', [])
         quantidade = int(self.request.data.get('quantidade', 1))
@@ -91,7 +91,7 @@ class PedidosAbertosViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         inicio_dia, fim_dia = get_intervalo_dia_trabalho()
-        # Lista exata dos status que consideramos "Em Aberto" (já saíram do 'anotado')
+        # Lista exata dos status que considera "Em Aberto" (já saíram do 'anotado')
         status_validos = ['em_preparo', 'entregue', 'solicitado_conta', 'conta_impressa']
         
         return Pedido.objects.filter(
@@ -100,7 +100,7 @@ class PedidosAbertosViewSet(viewsets.ReadOnlyModelViewSet):
             status__in=status_validos
         ).order_by('data_hora')
 
-# --- VIEWS DE RELATÓRIO / DASHBOARD ---
+# VIEWS DE RELATÓRIO / DASHBOARD
 class VendasDiariasView(APIView):
     permission_classes = [IsAdminUser]
     def get(self, request, format=None):

@@ -1,15 +1,12 @@
-// frontend/src/Dashboard.js
 
 import React from 'react';
 
-// Função auxiliar para formatar a data/hora
 const formatarDataHora = (dataHoraISO) => {
   if (!dataHoraISO) return '';
   const data = new Date(dataHoraISO);
   return data.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
 };
 
-// Função para formatar moeda
 const formatarMoeda = (valor) => {
   return (valor || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 };
@@ -78,7 +75,7 @@ const Dashboard = ({ data, loading, onVoltar, onMarcarPago, onImprimirConta }) =
           <p>Carregando dados do dashboard...</p>
       ) : (
           <>
-            {/* Seção de Totais */}
+
             <div className="dashboard-summary-grid">
               <div className="dashboard-summary vendas-diarias-container">
                 <h3>Faturamento Hoje (desde 2h AM)</h3>
@@ -94,18 +91,13 @@ const Dashboard = ({ data, loading, onVoltar, onMarcarPago, onImprimirConta }) =
               </div>
             </div>
 
-            {/* --- MUDANÇA AQUI: Novo Container para Grade de Listas --- */}
             <div className="dashboard-lists-grid">
-                {/* Coluna 1: Em Aberto */}
                 {renderListaPedidos("Pedidos Em Aberto", data.pedidos_em_aberto, true)}
                 
-                {/* Coluna 2: Pagos */}
                 {renderListaPedidos("Pedidos Pagos", data.pedidos_pagos)}
                 
-                {/* Coluna 3: Cancelados */}
                 {renderListaPedidos("Pedidos Cancelados", data.pedidos_cancelados)}
             </div>
-            {/* --- FIM DA MUDANÇA --- */}
           </>
       )}
     </div>

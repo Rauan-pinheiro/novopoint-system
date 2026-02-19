@@ -1,4 +1,3 @@
-// frontend/src/App.js
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -206,9 +205,8 @@ function App() {
   const handleImprimirConta = (pid) => { toast.info("Imprimindo..."); axios.patch(`/pedidos/${pid}/`, { status: 'solicitado_conta' }).then(() => { toast.success("Enviado!"); setTimeout(() => setRefreshTrigger(p => p + 1), 2000); }); };
 
 
-/* === FUNÇÃO FINAL DE PRODUÇÃO (Versão 8.0 - Borda Fix + Filtros) === */
+
 const renderContent = () => {
-    // 1. VISÃO DAS MESAS
     if (view === 'mesas') { 
         return (
             <div>
@@ -230,10 +228,8 @@ const renderContent = () => {
         ); 
     }
     
-    // 2. VISÃO DO DASHBOARD
     if (view === 'dashboard') return <Dashboard data={dashboardData} loading={loadingDashboard} onVoltar={() => setView('mesas')} onMarcarPago={handleMarcarComoPago} onImprimirConta={handleImprimirConta} />;
     
-    // 3. VISÃO DO CARDÁPIO / PRODUTO
     if (view === 'cardapio') {
         if (produtoSelecionado) {
             return (
@@ -246,7 +242,6 @@ const renderContent = () => {
 
                     <form onSubmit={handleAddItemSubmit} className="item-form">
                         
-                        {/* A. OPÇÕES DE TAMANHO/PREÇO BASE */}
                         {produtoSelecionado.precos_opcoes?.length > 0 && (
                             <div className="form-section">
                                 <label className="section-label">Escolha a Opção:</label>
@@ -268,22 +263,18 @@ const renderContent = () => {
                             <div className="preco-fixo-display"><h3>R$ {produtoSelecionado.preco_fixo}</h3></div>
                         }
 
-                        {/* B. OPÇÕES OBRIGATÓRIAS (BORDAS, MASSAS) - FIX DEFINITIVO DE PREÇO */}
                         {produtoSelecionado.opcoes_obrigatorias?.map(g => (
                             <div key={g.id} className="form-section">
                                 <label className="section-label">{g.nome}:</label>
                                 <div className="opcoes-grid">
                                     {g.valores.map(v => {
-                                        // 1. Pega o valor bruto (mesmo se vier null)
+                                        
                                         let valorBruto = v.preco_adicional || "0";
                                         
-                                        // 2. Converte para string e troca vírgula por ponto (ex: "5,00" -> "5.00")
                                         let valorFormatado = String(valorBruto).replace(',', '.');
-                                        
-                                        // 3. Transforma em número
+
                                         let precoExtra = parseFloat(valorFormatado);
 
-                                        // Se der erro (NaN), assume 0
                                         if (isNaN(precoExtra)) precoExtra = 0;
                                         
                                         return (
@@ -291,8 +282,7 @@ const renderContent = () => {
                                                 <input type="radio" name={`grp-${g.id}`} value={v.id} checked={opcoesExtrasSelecionadas[g.id] === v.id} onChange={() => handleOpcaoExtraChange(g.id, v.id)} />
                                                 <div className="opcao-card">
                                                     <strong>{v.valor}</strong>
-                                                    
-                                                    {/* Exibe se for maior que 0.01 centavo */}
+
                                                     {precoExtra > 0.01 && 
                                                         <span style={{
                                                             color: 'var(--brand-green)', 
@@ -312,39 +302,33 @@ const renderContent = () => {
                             </div>
                         ))}
 
-                        {/* C. ADICIONAIS - FILTRO FINAL DE PRODUÇÃO */}
                         {produtoSelecionado.categoria.permite_adicionais && adicionaisDisponiveis.length > 0 && (
                             <div className="form-section">
                                 <label className="section-label">Adicionais:</label>
                                 <div className="opcoes-grid">
                                     {adicionaisDisponiveis
                                         .filter(add => {
-                                            // Normaliza Strings (Previne erros de espaço extra)
+                                            
                                             const rawName = add.valor || add.nome || '';
                                             const catNome = produtoSelecionado.categoria.nome.trim().toLowerCase();
                                             const addNome = rawName.trim().toUpperCase();
 
-                                            // 1. REGRA PIZZA / BEIRUTE (Busca PZ)
                                             if (catNome.includes('pizza') || catNome.includes('beirute')) {
-                                                // Exceção Carne Moída no Beirute
                                                 if (catNome.includes('beirute') && (addNome.includes('CARNE MOÍDA') || addNome.includes('CARNE MOIDA'))) return false;
                                                 
                                                 return addNome.startsWith('PZ');
                                             }
 
-                                            // 2. REGRA LANCHE / SANDUÍCHE (Busca SN)
                                             if (catNome.includes('lanche') || catNome.includes('sandu') || catNome.includes('burguer')) {
                                                 return addNome.startsWith('SN');
                                             }
-                                            
-                                            // 3. OUTROS (Esfiha, Pastel): Mostra itens normais, esconde PZ/SN
+
                                             return !addNome.startsWith('PZ') && !addNome.startsWith('SN');
                                         })
                                         .map(add => (
                                         <label key={add.id} className="opcao-label-wrapper">
                                             <input type="checkbox" checked={adicionaisSelecionados.includes(add.id)} onChange={() => handleAdicionalChange(add.id)} />
                                             <div className="opcao-card">
-                                                {/* Remove prefixos PZ/SN visualmente */}
                                                 <strong>{add.valor.replace(/^(PZ|SN)\s*-\s*/i, '')}</strong>
                                                 <span>+ R$ {add.preco_adicional}</span>
                                             </div>
