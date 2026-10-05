@@ -90,6 +90,11 @@ vigia_impressao/     # script que imprime as comandas na cozinha
 - Integrar software com hardware (impressora térmica ESC/POS) em produção
 - Lidar com regras do negócio, como o dia de trabalho que termina depois da meia-noite
 
+## 🤝 Desenvolvido em parceria com o Claude
+
+Construí este sistema em parceria com o **Claude**, a IA da Anthropic, que trabalhou como meu par de programação. Eu conduzi o projeto: levantei as necessidades do negócio, tomei as decisões e validei tudo no uso real. O Claude me ajudou a desenhar a arquitetura, escrever e revisar código e documentar.
+
+
 ## 👨‍💻 Autor
 
 **Rauan Pinheiro Lima**
