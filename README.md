@@ -1,41 +1,96 @@
-# 🍔 Novopoint - Sistema de Gestão e Cardápio Digital
+# 🍔 Novopoint — Comanda Eletrônica para Lanchonete
 
-![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-green)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![Django REST](https://img.shields.io/badge/Django%20REST%20Framework-092E20?style=flat&logo=django&logoColor=white)
+![React](https://img.shields.io/badge/React%2018-20232A?style=flat&logo=react&logoColor=61DAFB)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
+![JWT](https://img.shields.io/badge/Auth-JWT-000000?style=flat&logo=jsonwebtokens&logoColor=white)
 
-## 📌 Sobre o Projeto
-O **Novopoint** é um sistema Full-Stack desenvolvido do zero para automatizar o fluxo de pedidos e a gestão de uma lanchonete real. O objetivo principal do projeto é oferecer uma interface ágil para os clientes e otimizar a operação da cozinha através de automação.
+Sistema full-stack feito do zero para uma **lanchonete real**. Os garçons anotam os pedidos das mesas pelo celular e a comanda **sai sozinha na impressora da cozinha**, sem ninguém precisar redigitar nada.
 
-A arquitetura foi dividida entre uma API robusta no back-end e uma interface focada na experiência do usuário em dispositivos móveis (Mobile-First) no front-end.
+<!-- Adicione aqui um GIF do fluxo: ![Demo](docs/demo.gif) -->
 
-## 🚀 Principais Funcionalidades
-- **Cardápio Digital Mobile-First:** Interface responsiva e otimizada para celulares, permitindo que o usuário navegue e faça pedidos com facilidade.
-- **API RESTful:** Gerenciamento seguro de produtos, categorias e pedidos.
-- **Automação de Cozinha (Destaque):** Implementação de um script independente em Python para leitura contínua da API e impressão automática das comandas diretamente na impressora da cozinha, reduzindo o tempo de atendimento.
-- **Painel Administrativo:** Gestão completa do cardápio e fluxo de caixa (via Django Admin / rotas autenticadas).
+## 🔄 Como funciona
 
-## 🛠️ Tecnologias Utilizadas
+```
+ Garçom (celular)          API Django REST              Vigia de impressão (PC da loja)
+┌──────────────┐  JWT   ┌──────────────────┐  polling  ┌────────────────────────────┐
+│ React        │──────▶ │ /api/pedidos/    │ ◀──────── │ busca pedidos pendentes    │
+│ mesas →      │        │ /api/produtos/   │           │ imprime a comanda (ESC/POS)│
+│ cardápio →   │        │ /api/dashboard/  │ ◀──────── │ atualiza o status (PATCH)  │
+│ pedido       │        └────────┬─────────┘           └─────────────┬──────────────┘
+└──────────────┘                 │ MySQL                             ▼
+                                                            🖨️ impressora térmica
+```
 
-### Back-end (API)
-- Python
-- Django & Django REST Framework (DRF)
-- JWT (JSON Web Tokens) para Autenticação
-- MySQL (Banco de Dados Relacional)
-- Python Decouple (Gestão de variáveis de ambiente)
+O pedido passa pelos status **anotado → em preparo → entregue → conta solicitada → conta impressa → pago**. O vigia de impressão consulta a API periodicamente, imprime a comanda da cozinha ou a conta da mesa e avança o status, para que nada seja impresso duas vezes.
 
-### Front-end
-- React.js
-- HTML5 & CSS3
-- Integração de rotas via Axios/Fetch
+## ✨ Funcionalidades
 
-### Infraestrutura & Automação
-- Script de Impressão (Python) nativo rodando localmente no estabelecimento.
-- Git & GitHub para versionamento de código.
+- **App do garçom (mobile-first)**: login, mapa de mesas, cardápio por categoria e montagem do pedido com observações (ex.: "sem cebola")
+- **Cardápio flexível**: produtos com preço fixo ou preço por opção (ex.: tamanho P/M/G), grupos de opções obrigatórias e adicionais pagos
+- **Impressão automática** de comandas e contas em impressora térmica, por um script Python independente
+- **Dashboard do dia** com faturamento e relatório de vendas diárias, considerando o "dia de trabalho" da lanchonete, que vai até as 2h da manhã
+- **Autenticação JWT** com renovação automática do token no front-end (interceptor do Axios)
+- **Django Admin** para gerenciar cardápio, mesas e usuários
+
+## 🛠️ Stack
+
+| Parte | Tecnologias |
+| :--- | :--- |
+| API | Python, Django 5, Django REST Framework, SimpleJWT, django-filter, django-cors-headers |
+| Banco | MySQL |
+| Front-end | React 18, Axios, React-Toastify |
+| Impressão | Python, python-escpos, schedule, requests |
+| Configuração | python-decouple (variáveis de ambiente) |
+
+## 🚀 Como rodar localmente
+
+**Back-end**
+```bash
+cd backend
+python -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+# crie um arquivo .env com SECRET_KEY, DB_NAME, DB_USER, DB_PASSWORD, DB_HOST e DB_PORT
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
+
+**Front-end**
+```bash
+cd frontend
+npm install
+npm start
+```
+
+**Vigia de impressão** (Windows, com a impressora instalada)
+```bash
+cd vigia_impressao
+pip install requests python-escpos schedule python-decouple pywin32
+# .env: API_BASE_URL, API_USERNAME, senha_impressora, PRINTER_NAME, INTERVALO_VERIFICACAO_SEGUNDOS, dados da empresa
+python vigia.py
+```
+
+## 📁 Estrutura
+
+```
+backend/
+├── cardapio/        # categorias, produtos, opções e adicionais
+├── pedidos/         # mesas, pedidos, itens, dashboard e relatórios
+└── config/          # settings e rotas (JWT em /api/token/)
+frontend/src/        # App.js (mesas, cardápio, pedido) e Dashboard.js
+vigia_impressao/     # script que imprime as comandas na cozinha
+```
+
+## 📚 O que aprendi
+
+- Separar o sistema em API e cliente e autenticar com JWT, incluindo o refresh token
+- Modelar um cardápio real, com preço variável por opção e adicionais
+- Integrar software com hardware (impressora térmica ESC/POS) em produção
+- Lidar com regras do negócio, como o dia de trabalho que termina depois da meia-noite
 
 ## 👨‍💻 Autor
+
 **Rauan Pinheiro Lima**
-- LinkedIn: [linkedin.com/in/rauanpinheiro-dev](https://linkedin.com/in/rauanpinheiro-dev)
-- GitHub: [@Rauan-pinheiro](https://github.com/Rauan-pinheiro)
+[LinkedIn](https://linkedin.com/in/rauanpinheiro-dev) · [GitHub](https://github.com/Rauan-pinheiro)
